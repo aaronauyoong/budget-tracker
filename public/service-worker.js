@@ -4,22 +4,25 @@ const FILES_TO_CACHE = [
 	"/index.html",
 	"/index.js",
 	"/style.css",
-    "/icons/icon-192x192.png",
-    "/icons/icon-512x512.png",
-    "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
-    "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
+	"/icons/icon-192x192.png",
+	"/icons/icon-512x512.png",
+	"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+	"https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
 ];
 
 const PRECACHE = "precache-v1";
 const RUNTIME = "runtime";
 
+// Pre-cache
 self.addEventListener("install", (event) => {
 	event.waitUntil(
-		caches
-			.open(PRECACHE)
-			.then((cache) => cache.addAll(FILES_TO_CACHE))
-			.then(self.skipWaiting())
+		caches.open(PRECACHE).then((cache) => {
+			console.log("Your files were successfully pre-cached!");
+			return cache.addAll(FILES_TO_CACHE);
+		})
 	);
+
+	self.skipWaiting();
 });
 
 // The activate handler takes care of cleaning up old caches.

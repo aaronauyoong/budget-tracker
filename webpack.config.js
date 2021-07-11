@@ -5,7 +5,7 @@ const config = {
 	entry: "./public/index.js",
 	output: {
 		path: __dirname + "/dist",
-		filename: "bundle.js",
+		filename: "[name].bundle.js",
 	},
 	mode: "development",
 	module: {
