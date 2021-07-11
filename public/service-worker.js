@@ -3,7 +3,7 @@ const FILES_TO_CACHE = [
 	"/",
 	"/index.html",
 	"/index.js",
-	"/style.css",
+	"/styles.css",
 	"/icons/icon-192x192.png",
 	"/icons/icon-512x512.png",
 	"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
@@ -16,13 +16,11 @@ const RUNTIME = "runtime";
 // Pre-cache
 self.addEventListener("install", (event) => {
 	event.waitUntil(
-		caches.open(PRECACHE).then((cache) => {
-			console.log("Your files were successfully pre-cached!");
-			return cache.addAll(FILES_TO_CACHE);
-		})
+		caches
+			.open(PRECACHE)
+			.then((cache) => cache.addAll(FILES_TO_CACHE))
+			.then(self.skipWaiting())
 	);
-
-	self.skipWaiting();
 });
 
 // The activate handler takes care of cleaning up old caches.
