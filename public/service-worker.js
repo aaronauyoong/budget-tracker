@@ -1,4 +1,6 @@
 // Service Worker
+// comment test
+const abc = 123;
 const FILES_TO_CACHE = [
 	"/",
 	"/index.html",
