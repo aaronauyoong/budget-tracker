@@ -5,7 +5,7 @@ const compression = require("compression");
 
 require("dotenv").config();
 
-const PORT = 3000;
+const PORT = process.env.MONGO_URL || 3000;
 
 const app = express();
 
