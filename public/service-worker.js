@@ -46,41 +46,41 @@ self.addEventListener("activate", (event) => {
 });
 
 // Information retrieval from cache
-// self.addEventListener("fetch", (event) => {
-// 	console.log("THIS IS A FETCH FOR ---> ", event)
-// 	console.log("THIS IS A FETCH FOR EVENT URL ---> ", event.request.url)
-// 	if (event.request.url.startsWith(self.location.origin)) {
-// 		event.respondWith(
-// 			caches.match(event.request).then((cachedResponse) => {
-// 				if (cachedResponse) {
-// 					return cachedResponse;
-// 				}
-
-// 				return caches.open(RUNTIME).then((cache) => {
-// 					return fetch(event.request).then((response) => {
-// 						return cache.put(event.request, response.clone()).then(() => {
-// 							return response;
-// 						});
-// 					});
-// 				});
-// 			})
-// 		);
-// 	}
-// });
 self.addEventListener("fetch", (event) => {
-	console.log("This is a fetch request ---> " + event.request.url);
-	event.respondWith(
-		caches.match(event.request).then((request) => {
-			if (request) {
-				// if cache is available, respond with cache
-				console.log("Responding with cache ---> " + event.request.url);
-				return request;
-			} else {
-				// else if no cache, try fetching request
-				console.log("File was not cached, fetching ---> " + event.request.url);
-				//   console.log(e.request.url)
-				return fetch(event.request);
-			}
-		})
-	);
+	console.log("THIS IS A FETCH FOR ---> ", event)
+	console.log("THIS IS A FETCH FOR EVENT URL ---> ", event.request.url)
+	if (event.request.url.startsWith(self.location.origin)) {
+		event.respondWith(
+			caches.match(event.request).then((cachedResponse) => {
+				if (cachedResponse) {
+					return cachedResponse;
+				}
+
+				return caches.open(RUNTIME).then((cache) => {
+					return fetch(event.request).then((response) => {
+						return cache.put(event.request, response.clone()).then(() => {
+							return response;
+						});
+					});
+				});
+			})
+		);
+	}
 });
+// self.addEventListener("fetch", (event) => {
+// 	console.log("This is a fetch request ---> " + event.request.url);
+// 	event.respondWith(
+// 		caches.match(event.request).then((request) => {
+// 			if (request) {
+// 				// if cache is available, respond with cache
+// 				console.log("Responding with cache ---> " + event.request.url);
+// 				return request;
+// 			} else {
+// 				// else if no cache, try fetching request
+// 				console.log("File was not cached, fetching ---> " + event.request.url);
+// 				//   console.log(e.request.url)
+// 				return fetch(event.request);
+// 			}
+// 		})
+// 	);
+// });
