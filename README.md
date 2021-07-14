@@ -3,7 +3,10 @@
 # Online/Offline Budget Tracker
 
 Project by: Aaron Au Yoong
+
 <br>
+
+Deployed to Heroku with MongoAtlas: [Budget Tracker](https://aay-budget-tracker.herokuapp.com/)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://choosealicense.com/licenses/mit/)
 
@@ -46,6 +49,12 @@ Online Features:
 
   * Offline entries should be added to tracker.
 
+A screenshot of how the app looks is displayed below:
+
+<br>
+
+<img src="./images/budget-tracker-prod-screenshot.png" width="80%">
+
 ## Installation
 There are a few ways to access & install this application. 
 
@@ -59,11 +68,13 @@ The first method is to clone this repository, and install this on your local mac
 npm i -y
 ````
 
-3. Install required dependencies by invoking the commands below. These include Express and Mongoose NPM Packages.
+3. Install required dependencies by invoking the commands below. These include Express Mongoose, Morgan and Compression NPM Packages.
 
 ````
 npm i express
 npm i mongoose
+npm i morgan
+npm i compression
 ````
 Congratulations! You have successfully installed the budget tracker application in your local computer. 
 
@@ -79,7 +90,7 @@ Simply search for the download icon above (it is typically to the left of the st
 
 <br>
 
-<img src="./images/install-desktop-app-prompt.png" width="50%">
+<img src="./images/install-app-desktop-prompt.png" width="50%">
 
 <br>
 
