@@ -51,21 +51,13 @@ self.addEventListener("fetch", (event) => {
 		caches.match(event.request).then((cachedResponse) => {
 			if (cachedResponse) {
 				// if cache is available, respond with cache
-				console.log("Responding with cache ---> " + cachedResponse);
+				console.log("Response with cache");
 				return cachedResponse;
 			} else {
 				// else try fetching event.request
-				console.log("No cachedResponse, running fetch ---> " + event.request);
+				console.log("No cachedResponse, running fetch ---> " + event.request.url);
 				return fetch(event.request)
 			}
-
-			// return caches.open(RUNTIME).then((cache) => {
-			// 	return fetch(event.request).then((response) => {
-			// 		return cache.put(event.request, response.clone()).then(() => {
-			// 			return response;
-			// 		});
-			// 	});
-			// });
 		})
 	);
 });
